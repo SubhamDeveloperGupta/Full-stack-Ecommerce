@@ -1,13 +1,13 @@
-package com.example.ecommerce;
+package com.product.catalog;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EcommerceApplicationTests {
+class ProductCatalogServiceApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
