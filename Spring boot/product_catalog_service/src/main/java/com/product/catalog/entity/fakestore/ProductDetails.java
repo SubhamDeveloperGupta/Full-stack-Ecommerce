@@ -1,4 +1,4 @@
-package com.product.catalog.entity;
+package com.product.catalog.entity.fakestore;
 
 
 import lombok.Data;

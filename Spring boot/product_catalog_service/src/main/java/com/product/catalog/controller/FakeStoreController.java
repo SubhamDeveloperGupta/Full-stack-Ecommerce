@@ -1,6 +1,6 @@
 package com.product.catalog.controller;
 
-import com.product.catalog.entity.ProductDetails;
+import com.product.catalog.entity.fakestore.ProductDetails;
 import com.product.catalog.service.FakeStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
