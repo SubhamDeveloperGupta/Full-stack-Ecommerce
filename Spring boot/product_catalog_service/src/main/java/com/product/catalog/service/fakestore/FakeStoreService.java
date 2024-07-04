@@ -1,4 +1,4 @@
-package com.product.catalog.service;
+package com.product.catalog.service.fakestore;
 
 import com.product.catalog.entity.fakestore.ProductDetails;
 import org.springframework.beans.factory.annotation.Autowired;
