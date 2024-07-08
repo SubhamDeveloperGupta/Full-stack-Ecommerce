@@ -22,6 +22,6 @@ public class Rating {
     @JoinColumn(name = "product_id")
     private Products product;
 
-//    @Transient
-//    private Integer count;
+    @Transient
+    private Integer count;
 }
