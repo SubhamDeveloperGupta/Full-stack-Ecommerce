@@ -28,4 +28,9 @@ public class ProductImplDao implements ProductDao {
                 .orElseThrow(ProductNotFoundException::new);
     }
 
+    @Override
+    public Products addProduct(Products product) {
+        return productsRepository.save(product);
+    }
+
 }

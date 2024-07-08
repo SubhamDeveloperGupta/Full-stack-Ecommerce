@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cd72319-75cf-4752-9e2f-1676d545d65c" name="Changes" comment="" />
+    <list default="true" id="4cd72319-75cf-4752-9e2f-1676d545d65c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring boot/product_catalog_service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Spring boot/product_catalog_service/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +21,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/SubhamKrGuptaDev/Ecommerce-.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/SubhamKrGuptaDev/Full-stack-Ecommerce.git&quot;,
     &quot;accountId&quot;: &quot;35bdd8f2-cc08-492a-9c08-6c8630fbbee8&quot;
   }
 }</component>
@@ -33,7 +36,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Subham__Changes&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -57,6 +60,8 @@
       <updated>1719163052324</updated>
       <workItem from="1719163053815" duration="104000" />
       <workItem from="1719542852593" duration="2000" />
+      <workItem from="1720449425735" duration="157000" />
+      <workItem from="1720449639750" duration="55000" />
     </task>
     <servers />
   </component>
