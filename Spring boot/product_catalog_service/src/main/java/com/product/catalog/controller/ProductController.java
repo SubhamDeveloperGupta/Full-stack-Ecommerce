@@ -5,7 +5,7 @@ import com.product.catalog.entity.db.Category;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
 import com.product.catalog.service.db.product.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,32 +15,35 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Products>> getAllProducts() {
-        return null;
+        return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
 
     @GetMapping(params = "productId")
     public ResponseEntity<Products> getProductsByProductId(@RequestParam("productId") Integer productId) {
-        return null;
+        return new ResponseEntity<>(productService.getProductsByProductId(productId), HttpStatus.OK);
     }
 
     @GetMapping("/rating/{productId}")
     public ResponseEntity<List<Rating>> getProductRatingsByProductId(@PathVariable("productId") Integer productId) {
-        return null;
+        return new ResponseEntity<>(productService.getProductRatingsByProductId(productId), HttpStatus.OK);
     }
 
     @GetMapping(params = "categoryId")
     public ResponseEntity<Category> getProductsByCategoryId(@RequestParam("categoryId") Integer categoryId) {
-        return null;
+        return new ResponseEntity<>(productService.getProductsByCategoryId(categoryId), HttpStatus.OK);
     }
 
     @GetMapping(params = "categoryName")
     public ResponseEntity<Category> getProductsByCategoryName(@RequestParam("categoryName") String categoryName) {
-        return null;
+        return new ResponseEntity<>(productService.getProductsByCategoryName(categoryName), HttpStatus.OK);
     }
 
 
