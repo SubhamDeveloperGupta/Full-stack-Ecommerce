@@ -18,4 +18,6 @@ public interface ProductService {
 
     Category getProductsByCategoryName(String categoryName);
 
+    Products addProduct(Products product);
+    
 }

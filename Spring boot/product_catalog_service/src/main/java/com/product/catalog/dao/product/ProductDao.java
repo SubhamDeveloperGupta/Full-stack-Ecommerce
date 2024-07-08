@@ -11,4 +11,6 @@ public interface ProductDao {
 
     Products getProductsByProductId(Integer productId);
 
+    Products addProduct(Products product);
+    
 }

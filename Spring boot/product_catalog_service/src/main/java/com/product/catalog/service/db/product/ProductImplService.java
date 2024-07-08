@@ -7,6 +7,7 @@ import com.product.catalog.dao.rating.RatingDao;
 import com.product.catalog.entity.db.Category;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
+import com.product.catalog.exception.GlobalException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +50,19 @@ public class ProductImplService implements ProductService {
         return categoryDao.getCategoryByName(categoryName);
     }
 
+    @Override
+    public Products addProduct(Products product) {
+        if(product.getCategory() == null) {
+            throw new GlobalException("Category can't be null");
+        }
+
+        if(product.getCategory().getName() == null ||
+                product.getCategory().getName().isBlank() ||
+                categoryDao.existsCategoryByName(product.getCategory().getName())) {
+            throw new GlobalException("Category already exists");
+        }
+
+        return productDao.addProduct(product);
+    }
 
 }

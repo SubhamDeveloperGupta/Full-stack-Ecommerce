@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(GlobalException.class)
+    public ResponseEntity<ErrorResponse> exceptionHandler(GlobalException ex) {
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage(ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorResponse> exceptionHandler(ProductNotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse();

@@ -46,6 +46,11 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductsByCategoryName(categoryName), HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<Products> addProduct(@RequestBody Products product) {
+        Products products = productService.addProduct(product);
+        return new ResponseEntity<>(products, HttpStatus.CREATED);
+    }
 
 
 }

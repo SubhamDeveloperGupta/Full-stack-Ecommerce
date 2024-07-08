@@ -24,4 +24,9 @@ public class CategoryImplDao implements CategoryDao {
         return null;
     }
 
+    @Override
+    public Boolean existsCategoryByName(String categoryName) {
+        return categoryRepository.existsByName(categoryName);
+    }
+
 }

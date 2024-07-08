@@ -8,4 +8,6 @@ public interface CategoryDao {
 
     Category getCategoryByName(String categoryName);
 
+    Boolean existsCategoryByName(String categoryName);
+
 }
