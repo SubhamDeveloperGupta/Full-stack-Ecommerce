@@ -36,4 +36,6 @@ public class Products {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Rating> ratings;
 
+    private String productOwnerName;
+
 }
