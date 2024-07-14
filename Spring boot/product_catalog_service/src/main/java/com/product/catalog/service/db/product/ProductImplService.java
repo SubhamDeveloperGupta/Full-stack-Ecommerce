@@ -59,7 +59,8 @@ public class ProductImplService implements ProductService {
             throw new GlobalException("Category does not exist");
         }
 
-        return productDao.addProduct(product);
+        Products newObject = productDao.addProduct(product);
+        return newObject;
     }
 
 }
