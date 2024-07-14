@@ -17,7 +17,7 @@ public class Products {
     @Column(name = "product_id", nullable = false, updatable = false)
     private Integer productId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 

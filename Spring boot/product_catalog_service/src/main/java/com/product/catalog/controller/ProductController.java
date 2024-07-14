@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/products")
@@ -37,12 +38,12 @@ public class ProductController {
     }
 
     @GetMapping(params = "categoryId")
-    public ResponseEntity<Category> getProductsByCategoryId(@RequestParam("categoryId") Integer categoryId) {
+    public ResponseEntity<Set<Products>> getProductsByCategoryId(@RequestParam("categoryId") Integer categoryId) {
         return new ResponseEntity<>(productService.getProductsByCategoryId(categoryId), HttpStatus.OK);
     }
 
     @GetMapping(params = "categoryName")
-    public ResponseEntity<Category> getProductsByCategoryName(@RequestParam("categoryName") String categoryName) {
+    public ResponseEntity<Set<Products>> getProductsByCategoryName(@RequestParam("categoryName") String categoryName) {
         return new ResponseEntity<>(productService.getProductsByCategoryName(categoryName), HttpStatus.OK);
     }
 

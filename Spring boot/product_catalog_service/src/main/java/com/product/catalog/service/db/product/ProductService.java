@@ -6,6 +6,7 @@ import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ProductService {
 
@@ -14,9 +15,9 @@ public interface ProductService {
 
     List<Rating> getProductRatingsByProductId(Integer productId);
 
-    Category getProductsByCategoryId(Integer categoryId);
+    Set<Products> getProductsByCategoryId(Integer categoryId);
 
-    Category getProductsByCategoryName(String categoryName);
+    Set<Products> getProductsByCategoryName(String categoryName);
 
     Products addProduct(Products product);
     
