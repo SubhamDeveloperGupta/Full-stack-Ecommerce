@@ -33,4 +33,9 @@ public class ProductImplDao implements ProductDao {
         return productsRepository.save(product);
     }
 
+    @Override
+    public boolean existsProductByProductId(Integer productId) {
+        return productsRepository.existsById(productId);
+    }
+
 }
