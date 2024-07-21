@@ -1,6 +1,7 @@
 package com.product.catalog.dao.product;
 
 
+import com.product.catalog.dto.ProductDto;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.exception.ProductNotFoundException;
 import com.product.catalog.repository.ProductsRepository;
@@ -18,14 +19,19 @@ public class ProductImplDao implements ProductDao {
     }
 
     @Override
-    public List<Products> getAllProducts() {
-        return productsRepository.findAll();
+    public List<ProductDto> getAllProducts() {
+        return productsRepository.findAllProducts();
     }
 
     @Override
     public Products getProductsByProductId(Integer productId) {
         return productsRepository.findById(productId)
                 .orElseThrow(ProductNotFoundException::new);
+    }
+
+
+    public ProductDto getProductByProductId(Integer productId) {
+        return productsRepository.findProductById(productId);
     }
 
     @Override

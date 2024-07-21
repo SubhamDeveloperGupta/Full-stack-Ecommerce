@@ -1,6 +1,7 @@
 package com.product.catalog.controller;
 
 
+import com.product.catalog.dto.ProductDto;
 import com.product.catalog.entity.db.Category;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
@@ -23,12 +24,12 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Products>> getAllProducts() {
+    public ResponseEntity<List<ProductDto>> getAllProducts() {
         return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
 
     @GetMapping(params = "productId")
-    public ResponseEntity<Products> getProductsByProductId(@RequestParam("productId") Integer productId) {
+    public ResponseEntity<ProductDto> getProductsByProductId(@RequestParam("productId") Integer productId) {
         return new ResponseEntity<>(productService.getProductsByProductId(productId), HttpStatus.OK);
     }
 
