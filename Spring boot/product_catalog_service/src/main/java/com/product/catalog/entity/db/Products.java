@@ -2,7 +2,7 @@ package com.product.catalog.entity.db;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.product.catalog.dto.ProductDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -11,6 +11,63 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Set;
 
+@NamedNativeQuery(
+        name = "Products.getProducts",
+        query = "SELECT  " +
+                " p.product_id AS productId, " +
+                " c.name AS categoryName, " +
+                " p.description AS description,  " +
+                " p.image_url AS imageUrl, " +
+                " p.title AS title,  " +
+                " p.price AS price, " +
+                " p.product_owner_name AS productOwnerName " +
+                " FROM products p " +
+                " JOIN categories c ON p.category_id = c.category_id",
+        resultSetMapping = "Mapping.getProducts"
+)
+@SqlResultSetMapping(
+        name = "Mapping.getProducts",
+        classes = @ConstructorResult(targetClass = ProductDto.class,
+            columns = {
+                    @ColumnResult(name = "productId", type = Integer.class),
+                    @ColumnResult(name = "categoryName", type = String.class),
+                    @ColumnResult(name = "description", type = String.class),
+                    @ColumnResult(name = "imageUrl", type = String.class),
+                    @ColumnResult(name = "title", type = String.class),
+                    @ColumnResult(name = "price", type = Double.class),
+                    @ColumnResult(name = "productOwnerName", type = String.class),
+            }
+        )
+)
+@NamedNativeQuery(
+        name = "Products.findProductById",
+        query = "SELECT  " +
+                " p.product_id AS productId, " +
+                " c.name AS categoryName, " +
+                " p.description AS description,  " +
+                " p.image_url AS imageUrl, " +
+                " p.title AS title,  " +
+                " p.price AS price, " +
+                " p.product_owner_name AS productOwnerName " +
+                " FROM products p " +
+                " JOIN categories c ON p.category_id = c.category_id " +
+                " AND p.product_id = :productId",
+        resultSetMapping = "Mapping.findProductById"
+)
+@SqlResultSetMapping(
+        name = "Mapping.findProductById",
+        classes = @ConstructorResult(targetClass = ProductDto.class,
+            columns = {
+                    @ColumnResult(name = "productId", type = Integer.class),
+                    @ColumnResult(name = "categoryName", type = String.class),
+                    @ColumnResult(name = "description", type = String.class),
+                    @ColumnResult(name = "imageUrl", type = String.class),
+                    @ColumnResult(name = "title", type = String.class),
+                    @ColumnResult(name = "price", type = Double.class),
+                    @ColumnResult(name = "productOwnerName", type = String.class),
+            }
+        )
+)
 @Getter
 @Setter
 @ToString

@@ -1,6 +1,7 @@
 package com.product.catalog.service.db.product;
 
 
+import com.product.catalog.dto.ProductDto;
 import com.product.catalog.entity.db.Category;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
@@ -10,8 +11,8 @@ import java.util.Set;
 
 public interface ProductService {
 
-    List<Products> getAllProducts();
-    Products getProductsByProductId(Integer productId);
+    List<ProductDto> getAllProducts();
+    ProductDto getProductsByProductId(Integer productId);
 
     List<Rating> getProductRatingsByProductId(Integer productId);
 

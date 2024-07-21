@@ -4,6 +4,7 @@ package com.product.catalog.service.db.product;
 import com.product.catalog.dao.category.CategoryDao;
 import com.product.catalog.dao.product.ProductDao;
 import com.product.catalog.dao.rating.RatingDao;
+import com.product.catalog.dto.ProductDto;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
 import com.product.catalog.exception.GlobalException;
@@ -26,13 +27,16 @@ public class ProductImplService implements ProductService {
     }
 
     @Override
-    public List<Products> getAllProducts() {
+    public List<ProductDto> getAllProducts() {
         return productDao.getAllProducts();
     }
 
     @Override
-    public Products getProductsByProductId(Integer productId) {
-        return productDao.getProductsByProductId(productId);
+    public ProductDto getProductsByProductId(Integer productId) {
+        ProductDto product = productDao.getProductByProductId(productId);
+        List<Rating> rating = ratingDao.getProductRatingsByProductId(productId);
+        product.setRatingList(rating);
+        return product;
     }
 
     @Override
