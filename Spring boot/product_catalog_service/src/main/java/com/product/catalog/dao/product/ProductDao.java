@@ -16,4 +16,6 @@ public interface ProductDao {
     Products addProduct(Products product);
 
     boolean existsProductByProductId(Integer productId);
+
+    Products updateProduct(Products existingProduct);
 }

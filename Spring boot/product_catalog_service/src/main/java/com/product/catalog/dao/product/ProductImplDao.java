@@ -44,4 +44,9 @@ public class ProductImplDao implements ProductDao {
         return productsRepository.existsById(productId);
     }
 
+    @Override
+    public Products updateProduct(Products existingProduct) {
+        return productsRepository.save(existingProduct);
+    }
+
 }

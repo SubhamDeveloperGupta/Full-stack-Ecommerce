@@ -14,6 +14,7 @@ public interface CategoryDao {
 
     Boolean existsCategoryByName(String categoryName);
 
+    Category findCategoryById(Integer categoryId);
 
     List<Category> getAllCategories();
 
