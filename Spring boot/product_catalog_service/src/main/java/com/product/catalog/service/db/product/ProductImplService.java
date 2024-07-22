@@ -5,6 +5,7 @@ import com.product.catalog.dao.category.CategoryDao;
 import com.product.catalog.dao.product.ProductDao;
 import com.product.catalog.dao.rating.RatingDao;
 import com.product.catalog.dto.ProductDto;
+import com.product.catalog.entity.db.Category;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
 import com.product.catalog.exception.GlobalException;
@@ -65,6 +66,37 @@ public class ProductImplService implements ProductService {
 
         Products newObject = productDao.addProduct(product);
         return newObject;
+    }
+
+    @Override
+    public Products updateProduct(Integer productId, Products product) {
+        Products existingProduct = productDao.getProductsByProductId(productId);
+        return createObject(existingProduct, product);
+    }
+
+    private Products createObject(Products existingProduct, Products newProduct) {
+        if(newProduct.getProductId() == null ||
+                !existingProduct.getProductId().equals(newProduct.getProductId()) ||
+                newProduct.getCategory().getCategoryId() == null) {
+            throw new GlobalException("Product cannot be updated");
+        }
+
+        // Set category values
+        if(!existingProduct.getCategory().getCategoryId().equals(newProduct.getCategory().getCategoryId())) {
+            if(!categoryDao.existsCategoryById(newProduct.getCategory().getCategoryId())) {
+                throw new GlobalException("Category does not exist");
+            }
+            existingProduct.setCategory(newProduct.getCategory());
+        }
+
+        // Set Product details
+        existingProduct.setProductOwnerName(newProduct.getProductOwnerName());
+        existingProduct.setPrice(newProduct.getPrice());
+        existingProduct.setTitle(newProduct.getTitle());
+        existingProduct.setDescription(newProduct.getDescription());
+        existingProduct.setImageUrl(newProduct.getImageUrl());
+
+        return productDao.updateProduct(existingProduct);
     }
 
 }

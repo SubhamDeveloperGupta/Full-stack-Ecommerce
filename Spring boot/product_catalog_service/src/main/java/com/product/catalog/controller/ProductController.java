@@ -50,9 +50,13 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Products> addProduct(@RequestBody Products product) {
-        Products products = productService.addProduct(product);
-        return new ResponseEntity<>(products, HttpStatus.CREATED);
+        return new ResponseEntity<>(productService.addProduct(product), HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<Products> updateProduct(@RequestParam Integer productId,
+                                                  @RequestBody Products product) {
+        return new ResponseEntity<>(productService.updateProduct(productId, product), HttpStatus.OK);
+    }
 
 }

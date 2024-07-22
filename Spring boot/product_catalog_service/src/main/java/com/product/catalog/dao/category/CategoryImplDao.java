@@ -38,6 +38,13 @@ public class CategoryImplDao implements CategoryDao {
     }
 
     @Override
+    public Category findCategoryById(Integer categoryId) {
+        return categoryRepository
+                .findById(categoryId)
+                .orElseThrow(CategoryNotFoundException::new);
+    }
+
+    @Override
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }

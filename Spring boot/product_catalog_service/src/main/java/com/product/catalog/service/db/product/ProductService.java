@@ -21,5 +21,6 @@ public interface ProductService {
     Set<Products> getProductsByCategoryName(String categoryName);
 
     Products addProduct(Products product);
-    
+
+    Products updateProduct(Integer productId, Products product);
 }
