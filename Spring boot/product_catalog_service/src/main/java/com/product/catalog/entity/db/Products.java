@@ -2,6 +2,7 @@ package com.product.catalog.entity.db;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.product.catalog.dto.ProductDto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -101,6 +102,7 @@ public class Products {
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
+    @JsonManagedReference
     private Set<Rating> ratings;
 
     private String productOwnerName;

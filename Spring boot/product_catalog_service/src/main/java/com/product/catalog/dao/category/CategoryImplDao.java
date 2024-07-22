@@ -4,12 +4,12 @@ import com.product.catalog.entity.db.Category;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.exception.CategoryNotFoundException;
 import com.product.catalog.repository.CategoryRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Set;
 
-@Service
+@Repository
 public class CategoryImplDao implements CategoryDao {
 
     private final CategoryRepository categoryRepository;

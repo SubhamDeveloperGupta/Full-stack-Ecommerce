@@ -5,11 +5,11 @@ import com.product.catalog.dto.ProductDto;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.exception.ProductNotFoundException;
 import com.product.catalog.repository.ProductsRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Service
+@Repository
 public class ProductImplDao implements ProductDao {
 
     private final ProductsRepository productsRepository;
