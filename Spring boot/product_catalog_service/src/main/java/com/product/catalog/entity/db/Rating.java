@@ -1,5 +1,6 @@
 package com.product.catalog.entity.db;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,8 +19,12 @@ public class Rating {
     @Column(name = "rate", precision = 2, scale = 1, nullable = false)
     private BigDecimal rate;
 
+    @Column(name = "message", nullable = false)
+    private String message;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
+    @JsonBackReference
     private Products product;
 
     @Transient
