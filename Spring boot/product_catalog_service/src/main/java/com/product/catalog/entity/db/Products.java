@@ -102,7 +102,7 @@ public class Products {
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
-//    @JsonManagedReference
+    @JsonManagedReference
     private Set<Rating> ratings;
 
     private String productOwnerName;
