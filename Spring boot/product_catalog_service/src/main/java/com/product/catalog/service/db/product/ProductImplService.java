@@ -51,7 +51,7 @@ public class ProductImplService implements ProductService {
 
     @Override
     public Set<Products> getProductsByCategoryName(String categoryName) {
-        return categoryDao.getCategoryByName(categoryName);
+        return categoryDao.getProductsByCategoryName(categoryName);
     }
 
     @Override

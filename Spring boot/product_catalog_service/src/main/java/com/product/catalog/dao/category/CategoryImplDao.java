@@ -26,7 +26,7 @@ public class CategoryImplDao implements CategoryDao {
     }
 
     @Override
-    public Set<Products> getCategoryByName(String categoryName) {
+    public Set<Products> getProductsByCategoryName(String categoryName) {
         return categoryRepository.findByName(categoryName)
                 .orElseThrow(CategoryNotFoundException::new)
                 .getProducts();
@@ -62,6 +62,18 @@ public class CategoryImplDao implements CategoryDao {
     @Override
     public boolean existsCategoryById(Integer categoryId) {
         return categoryRepository.existsById(categoryId);
+    }
+
+    @Override
+    public Category getCategoryByCategoryName(String category) {
+        return categoryRepository
+                .findByName(category)
+                .orElse(null);
+    }
+
+    @Override
+    public List<Category> saveAllCategoryObject(List<Category> newCategories) {
+        return categoryRepository.saveAll(newCategories);
     }
 
 }

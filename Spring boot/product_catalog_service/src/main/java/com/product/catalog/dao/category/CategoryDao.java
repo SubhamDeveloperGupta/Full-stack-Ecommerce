@@ -10,7 +10,7 @@ public interface CategoryDao {
 
     Set<Products> getCategoryById(Integer categoryId);
 
-    Set<Products> getCategoryByName(String categoryName);
+    Set<Products> getProductsByCategoryName(String categoryName);
 
     Boolean existsCategoryByName(String categoryName);
 
@@ -23,5 +23,9 @@ public interface CategoryDao {
     Category updateCategory(Category category);
 
     boolean existsCategoryById(Integer categoryId);
+
+    Category getCategoryByCategoryName(String category);
+
+    List<Category> saveAllCategoryObject(List<Category> newCategories);
 
 }

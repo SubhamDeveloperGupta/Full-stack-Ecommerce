@@ -88,7 +88,7 @@ public class Products {
     @JsonBackReference
     private Category category;
 
-    @Column(name = "description", length = 500, nullable = false)
+    @Column(name = "description", length = 1200, nullable = false)
     private String description;
 
     @Column(name = "image_url", length = 500, nullable = false)

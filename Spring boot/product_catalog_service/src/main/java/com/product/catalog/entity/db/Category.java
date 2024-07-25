@@ -23,7 +23,7 @@ public class Category {
     @Column(name = "category_id", nullable = false, updatable = false)
     private Integer categoryId;
 
-    @Column(name = "name", length = 100, nullable = false)
+    @Column(name = "name", length = 200, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
