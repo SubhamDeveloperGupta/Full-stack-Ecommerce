@@ -49,4 +49,9 @@ public class ProductImplDao implements ProductDao {
         return productsRepository.save(existingProduct);
     }
 
+    @Override
+    public void createListOfProduct(List<Products> collectNewProducts) {
+        productsRepository.saveAll(collectNewProducts);
+    }
+
 }

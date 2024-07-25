@@ -18,4 +18,7 @@ public interface ProductDao {
     boolean existsProductByProductId(Integer productId);
 
     Products updateProduct(Products existingProduct);
+
+    void createListOfProduct(List<Products> collectNewProducts);
+
 }

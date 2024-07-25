@@ -3,6 +3,8 @@ package com.product.catalog.entity.fakestore;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class ProductDetails {
     private Integer id;
@@ -10,7 +12,7 @@ public class ProductDetails {
     private String description;
     private String image;
     private String title;
-    private Double price;
+    private BigDecimal price;
 
     private Rating rating;
 }

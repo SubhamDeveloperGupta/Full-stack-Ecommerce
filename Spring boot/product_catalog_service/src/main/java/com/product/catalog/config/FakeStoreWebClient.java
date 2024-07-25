@@ -10,12 +10,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class FakeStoreWebClient {
 
-    private final IfDbEmpty ifDbEmpty;
-
-    public FakeStoreWebClient(IfDbEmpty ifDbEmpty) {
-        this.ifDbEmpty = ifDbEmpty;
-    }
-
     @Bean
     public WebClient webClient() {
         return WebClient.builder()
@@ -23,9 +17,5 @@ public class FakeStoreWebClient {
                 .build();
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void checkDbDataPresentOrNot() {
-        ifDbEmpty.executeStart();
-    }
 
 }
