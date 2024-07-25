@@ -2,7 +2,6 @@ package com.product.catalog.controller;
 
 
 import com.product.catalog.dto.ProductDto;
-import com.product.catalog.entity.db.Category;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
 import com.product.catalog.service.db.product.ProductService;
