@@ -5,7 +5,6 @@ import com.product.catalog.dao.category.CategoryDao;
 import com.product.catalog.dao.product.ProductDao;
 import com.product.catalog.dao.rating.RatingDao;
 import com.product.catalog.dto.ProductDto;
-import com.product.catalog.entity.db.Category;
 import com.product.catalog.entity.db.Products;
 import com.product.catalog.entity.db.Rating;
 import com.product.catalog.exception.GlobalException;
