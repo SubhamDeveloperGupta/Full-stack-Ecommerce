@@ -54,4 +54,9 @@ public class ProductImplDao implements ProductDao {
         productsRepository.saveAll(collectNewProducts);
     }
 
+    @Override
+    public Long getProductsCount() {
+        return productsRepository.getProductsCount();
+    }
+
 }

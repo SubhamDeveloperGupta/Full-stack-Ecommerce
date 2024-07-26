@@ -28,4 +28,6 @@ public interface CategoryDao {
 
     List<Category> saveAllCategoryObject(List<Category> newCategories);
 
+    Long getCategoriesCount();
+
 }

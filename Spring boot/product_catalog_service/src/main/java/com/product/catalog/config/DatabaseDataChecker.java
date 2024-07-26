@@ -33,8 +33,13 @@ public class DatabaseDataChecker {
     }
 
     public void executeStart() {
+        log.info("Start Checking product data available or not available...");
         if(isDbEmpty()) {
+            log.info("--- Products not available Start creating new products ---");
+
             Flux<ProductDetails> productDetailsFlux = gettingDataFromFakeStore();
+            log.info("Get all products from fake store...");
+
             Mono<List<ProductDetails>> listMono = productDetailsFlux.collectList();
             List<ProductDetails> listProductDetails = listMono.blockOptional().orElse(null);
             if(listProductDetails == null) {
@@ -43,18 +48,21 @@ public class DatabaseDataChecker {
             }
 
             List<Category> saveCategory = createObjectListOfCategory(listProductDetails);
+            log.info("All Categories are created successfully...");
             Map<String, Category> map = new ConcurrentHashMap<>();
             for(Category category : saveCategory) {
                 map.put(category.getName(), category);
             }
-            log.info("All Categories Have Created...");
-            createProducts(listProductDetails,map);
 
+            createProducts(listProductDetails,map);
             log.info("Created New Products in Db...");
+        } else {
+            log.info("--- Database have available Products ---");
         }
     }
 
     private void createProducts(List<ProductDetails> productDetails, Map<String, Category> map) {
+        log.info("Trying to create new products...");
         List<Products> collectNewProducts = productDetails
                 .stream()
                 .parallel()
@@ -82,6 +90,7 @@ public class DatabaseDataChecker {
     }
 
     private List<Category> createObjectListOfCategory(List<ProductDetails> list) {
+        log.info("Trying to Create Category...");
         Set<String> categoryName = list.stream()
                 .map(ProductDetails::getCategory)
                 .collect(Collectors.toSet());
@@ -94,7 +103,6 @@ public class DatabaseDataChecker {
                 newCategories.add(category);
             }
         }
-
         return categoryDao.saveAllCategoryObject(newCategories);
     }
 
@@ -103,10 +111,16 @@ public class DatabaseDataChecker {
     }
 
     private boolean isDbEmpty() {
-        List<ProductDto> getAll = productDao.getAllProducts();
-        if(getAll.isEmpty()) {
+        Long products = productDao.getProductsCount();
+        Long categories = categoryDao.getCategoriesCount();
+
+        if((products == null || products == 0L) &&
+                (categories == null || categories == 0L)) {
+            log.info("Categories and products are empty");
             return true;
         }
+        log.info("Categories Have in DB: {} ", categories);
+        log.info("Products Have in DB: {} ", products);
         return false;
     }
 

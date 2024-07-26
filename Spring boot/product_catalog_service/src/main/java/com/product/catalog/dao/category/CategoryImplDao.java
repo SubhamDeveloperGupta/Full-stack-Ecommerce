@@ -76,4 +76,9 @@ public class CategoryImplDao implements CategoryDao {
         return categoryRepository.saveAll(newCategories);
     }
 
+    @Override
+    public Long getCategoriesCount() {
+        return categoryRepository.getCategoriesCount();
+    }
+
 }
