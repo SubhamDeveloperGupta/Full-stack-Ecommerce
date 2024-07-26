@@ -91,7 +91,7 @@ public class Products {
     @Column(name = "description", length = 1200, nullable = false)
     private String description;
 
-    @Column(name = "image_url", length = 500, nullable = false)
+    @Column(name = "image_url", length = 1000, nullable = false)
     private String imageUrl;
 
     @Column(name = "title", length = 500, nullable = false)
