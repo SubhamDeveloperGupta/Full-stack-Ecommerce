@@ -21,4 +21,6 @@ public interface ProductDao {
 
     void createListOfProduct(List<Products> collectNewProducts);
 
+    Long getProductsCount();
+
 }

@@ -13,4 +13,7 @@ public interface ProductsRepository extends JpaRepository<Products, Integer> {
 
     @Query(name = "Products.findProductById", nativeQuery = true)
     ProductDto findProductById(Integer productId);
+
+    @Query(value = "SELECT COUNT(1) FROM products", nativeQuery = true)
+    Long getProductsCount();
 }
