@@ -9,8 +9,8 @@ CREATE TABLE products
 (
     product_id    INT AUTO_INCREMENT NOT NULL,
     category_id   INT          NOT NULL,
-    `description` VARCHAR(500) NOT NULL,
-    image_url     VARCHAR(500) NOT NULL,
+    `description` VARCHAR(1200) NOT NULL,
+    image_url     VARCHAR(1000) NOT NULL,
     title         VARCHAR(500) NOT NULL,
     price         DECIMAL      NOT NULL,
     CONSTRAINT pk_products PRIMARY KEY (product_id)
