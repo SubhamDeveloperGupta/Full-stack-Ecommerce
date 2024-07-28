@@ -7,8 +7,13 @@ import java.util.List;
 
 public interface UserRepository {
 
-    List<UserDetails> getAllUsers();
-    UserDetails getUserByUserId(Integer userId);
-    UserDetails createUser(UserDetails userDetails);
+    List<UserDetails> getAllUserDetails();
+    UserDetails getUserDetailsById(Integer userId);
+    UserDetails CreateUserDetails(UserDetails userDetails);
+    UserDetails UpdateUserDetails(Integer userId, UserDetails userDetails);
 
+    boolean checkUsernameAlreadyIsPresent(String username);
+    boolean checkEmailAlreadyIsPresent(String email);
+    boolean checkMobileNumberAlreadyIsPresent(String mobileNumber);
+    
 }
