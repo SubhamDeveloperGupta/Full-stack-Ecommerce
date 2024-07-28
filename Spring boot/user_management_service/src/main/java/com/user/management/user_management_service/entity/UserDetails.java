@@ -16,8 +16,14 @@ public class UserDetails {
     private String firstName;
     private String middleName;
     private String lastName;
+    @Column(unique = true)
     private String userName;
+    private String password;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String mobileNumber;
+    @Column(name = "active_status", nullable = false, length = 1)
+    private Character activeStatus;
 
 }
