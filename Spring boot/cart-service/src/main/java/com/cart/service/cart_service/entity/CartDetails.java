@@ -1,28 +1,25 @@
 package com.cart.service.cart_service.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.cart.service.cart_service.util.ProductPair;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
 import java.util.Map;
 
 @Getter
 @Setter
-@Entity
-@Document
 public class CartDetails {
 
-    @Id
-    @GeneratedValue
+    @MongoId
+    private String id;
+
+//    @Column(unique = true)
     private Integer userId;
 
-    @Column(name = "map_products")
-    private Map<Integer, List<Products>> productsMap;
+//    @Column(name = "map_products")
+    private Map<Integer, ProductPair> productsMap;
 
 }
