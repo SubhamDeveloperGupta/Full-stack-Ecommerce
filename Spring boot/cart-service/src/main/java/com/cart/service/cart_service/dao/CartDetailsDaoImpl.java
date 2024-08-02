@@ -1,7 +1,8 @@
 package com.cart.service.cart_service.dao;
 
 import com.cart.service.cart_service.entity.CartDetails;
-import com.cart.service.cart_service.entity.Products;
+import com.cart.service.cart_service.entity.Product;
+import com.cart.service.cart_service.exceptions.UserNotFoundException;
 import com.cart.service.cart_service.repository.CartDetailsRepository;
 import org.springframework.stereotype.Repository;
 
@@ -23,29 +24,33 @@ public class CartDetailsDaoImpl implements CartDetailsDao {
 
     @Override
     public CartDetails getAllCartsProductByUserId(Integer userId) {
-        return cartDetailsRepository.findByUserId(userId);
+        return cartDetailsRepository
+                .findByUserId(userId)
+                .orElseThrow(UserNotFoundException::new);
     }
 
     @Override
-    public CartDetails createCart(CartDetails cartDetails) {
-        Integer userId = cartDetails.getUserId();
-        if (userId == null) {
-            throw new RuntimeException();
-        }
-        if (cartDetailsRepository.existsByUserId(userId)) {
-            // TODO
-        }
-        // TODO
-        return null;
+    public CartDetails createCart(CartDetails cartObj) {
+        return cartDetailsRepository.save(cartObj);
     }
 
     @Override
-    public CartDetails addNewItemToCart(Integer userId, Products products) {
+    public CartDetails addNewItemToCart(Integer userId, Product products) {
         return null;
     }
 
     @Override
     public CartDetails deleteItemFromCart(Integer userId, Integer productId) {
+        return null;
+    }
+
+    @Override
+    public boolean existsByUserId(Integer userId) {
+        return cartDetailsRepository.existsByUserId(userId);
+    }
+
+    @Override
+    public CartDetails decreaseProduct(Integer userId, Integer product) {
         return null;
     }
 

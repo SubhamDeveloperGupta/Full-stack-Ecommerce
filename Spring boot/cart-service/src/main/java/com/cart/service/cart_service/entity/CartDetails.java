@@ -1,6 +1,7 @@
 package com.cart.service.cart_service.entity;
 
 
+import com.cart.service.cart_service.util.ProductPair;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -19,6 +20,6 @@ public class CartDetails {
     private Integer userId;
 
 //    @Column(name = "map_products")
-    private Map<Integer, List<Products>> productsMap;
+    private Map<Integer, ProductPair> productsMap;
 
 }
