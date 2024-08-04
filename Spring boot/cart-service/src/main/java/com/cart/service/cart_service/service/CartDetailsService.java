@@ -12,7 +12,6 @@ public interface CartDetailsService {
     CartDetails getAllCartsProductByUserId(Integer userId);
     CartDetails createCart(CartRequest request);
     CartDetails addNewItemToCart(Integer userId, Product products);
-    CartDetails deleteItemFromCart(Integer userId, Integer productId);
 
     CartDetails decreaseProduct(Integer userId, Integer productId);
 }

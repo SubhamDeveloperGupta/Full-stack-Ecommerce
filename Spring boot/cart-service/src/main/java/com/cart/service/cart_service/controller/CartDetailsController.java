@@ -34,5 +34,10 @@ public class CartDetailsController {
         return new ResponseEntity<>(cartDetailsService.createCart(request), HttpStatus.CREATED);
     }
 
-    // TODO addNewItemToCart, deleteItemFromCart, decreaseProduct
+    @PutMapping
+    public ResponseEntity<CartDetails> addProductUpdateCart(@RequestBody CartRequest request) {
+        return new ResponseEntity<>(cartDetailsService.addNewItemToCart(request.getUserId(), request.getProduct()), HttpStatus.OK);
+    }
+
+
 }

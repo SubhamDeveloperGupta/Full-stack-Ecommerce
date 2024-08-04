@@ -4,6 +4,7 @@ import com.cart.service.cart_service.dao.CartDetailsDao;
 import com.cart.service.cart_service.entity.CartDetails;
 import com.cart.service.cart_service.entity.Product;
 import com.cart.service.cart_service.exceptions.GlobalException;
+import com.cart.service.cart_service.exceptions.UserNotFoundException;
 import com.cart.service.cart_service.util.CartRequest;
 import com.cart.service.cart_service.util.ProductPair;
 import org.springframework.stereotype.Service;
@@ -65,12 +66,25 @@ public class CartDetailsServiceImpl implements CartDetailsService {
 
     @Override
     public CartDetails addNewItemToCart(Integer userId, Product product) {
-        return cartDetailsDao.addNewItemToCart(userId, product);
-    }
+        if(userId == null || product == null) {
+            throw new GlobalException("UserId and product can't be null");
+        }
 
-    @Override
-    public CartDetails deleteItemFromCart(Integer userId, Integer productId) {
-        return cartDetailsDao.deleteItemFromCart(userId, productId);
+        if(!cartDetailsDao.existsByUserId(userId)) {
+            throw new UserNotFoundException();
+        }
+        CartDetails cartObj = getAllCartsProductByUserId(userId);
+
+        Map<Integer, ProductPair> productsMap = cartObj.getProductsMap();
+
+        if(productsMap.containsKey(product.getProductId())) {
+            ProductPair productPair = productsMap.get(product.getProductId());
+            productPair.setCount(productPair.getCount() + 1);
+        } else {
+            productsMap.put(product.getProductId(), new ProductPair(product, 1));
+        }
+
+        return cartDetailsDao.addNewItemToCart(cartObj);
     }
 
     @Override

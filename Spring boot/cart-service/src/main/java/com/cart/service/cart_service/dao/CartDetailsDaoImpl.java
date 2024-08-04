@@ -35,13 +35,8 @@ public class CartDetailsDaoImpl implements CartDetailsDao {
     }
 
     @Override
-    public CartDetails addNewItemToCart(Integer userId, Product products) {
-        return null;
-    }
-
-    @Override
-    public CartDetails deleteItemFromCart(Integer userId, Integer productId) {
-        return null;
+    public CartDetails addNewItemToCart(CartDetails cartObj) {
+        return cartDetailsRepository.save(cartObj);
     }
 
     @Override
@@ -51,6 +46,7 @@ public class CartDetailsDaoImpl implements CartDetailsDao {
 
     @Override
     public CartDetails decreaseProduct(Integer userId, Integer product) {
+
         return null;
     }
 

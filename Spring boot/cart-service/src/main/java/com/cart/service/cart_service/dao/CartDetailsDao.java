@@ -10,8 +10,7 @@ public interface CartDetailsDao {
     List<CartDetails> getAllCart();
     CartDetails getAllCartsProductByUserId(Integer userId);
     CartDetails createCart(CartDetails cartDetails);
-    CartDetails addNewItemToCart(Integer userId, Product products);
-    CartDetails deleteItemFromCart(Integer userId, Integer productId);
+    CartDetails addNewItemToCart(CartDetails cartObj);
 
 
     boolean existsByUserId(Integer userId);
