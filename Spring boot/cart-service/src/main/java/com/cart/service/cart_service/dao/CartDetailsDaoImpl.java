@@ -1,7 +1,6 @@
 package com.cart.service.cart_service.dao;
 
 import com.cart.service.cart_service.entity.CartDetails;
-import com.cart.service.cart_service.entity.Product;
 import com.cart.service.cart_service.exceptions.UserNotFoundException;
 import com.cart.service.cart_service.repository.CartDetailsRepository;
 import org.springframework.stereotype.Repository;
@@ -45,9 +44,8 @@ public class CartDetailsDaoImpl implements CartDetailsDao {
     }
 
     @Override
-    public CartDetails decreaseProduct(Integer userId, Integer product) {
-
-        return null;
+    public CartDetails decreaseProduct(CartDetails cartDetails) {
+        return cartDetailsRepository.save(cartDetails);
     }
 
 }

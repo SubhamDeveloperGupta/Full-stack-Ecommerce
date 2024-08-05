@@ -81,14 +81,34 @@ public class CartDetailsServiceImpl implements CartDetailsService {
             ProductPair productPair = productsMap.get(product.getProductId());
             productPair.setCount(productPair.getCount() + 1);
         } else {
-            productsMap.put(product.getProductId(), new ProductPair(product, 1));
+            throw new GlobalException("Product not found");
         }
 
         return cartDetailsDao.addNewItemToCart(cartObj);
     }
 
     @Override
-    public CartDetails decreaseProduct(Integer userId, Integer productId) {
-        return cartDetailsDao.decreaseProduct(userId, productId);
+    public CartDetails decreaseProduct(Integer userId, Product product) {
+        if(userId == null || product == null) {
+            throw new GlobalException("UserId and product can't be null");
+        }
+
+        if(!cartDetailsDao.existsByUserId(userId)) {
+            throw new UserNotFoundException();
+        }
+
+        CartDetails cartObj = getAllCartsProductByUserId(userId);
+
+        Map<Integer, ProductPair> productsMap = cartObj.getProductsMap();
+
+        if(productsMap.containsKey(product.getProductId()) &&
+                productsMap.get(product.getProductId()).getCount() > 1) {
+            ProductPair productPair = productsMap.get(product.getProductId());
+            productPair.setCount(productPair.getCount() - 1);
+        } else {
+            throw new GlobalException("Product not found");
+        }
+
+        return cartDetailsDao.decreaseProduct(cartObj);
     }
 }

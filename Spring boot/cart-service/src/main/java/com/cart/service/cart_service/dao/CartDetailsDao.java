@@ -14,5 +14,5 @@ public interface CartDetailsDao {
 
 
     boolean existsByUserId(Integer userId);
-    CartDetails decreaseProduct(Integer userId, Integer product);
+    CartDetails decreaseProduct(CartDetails cartDetails);
 }
