@@ -1,6 +1,7 @@
 package com.user.management.user_management_service.dao;
 
 import com.user.management.user_management_service.entity.UserDetails;
+import com.user.management.user_management_service.exceptions.UserNotFoundException;
 import com.user.management.user_management_service.repository.UserDetailsRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,12 +19,13 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<UserDetails> getAllUserDetails() {
-        return List.of();
+        return userDetailsRepository.findAll();
     }
 
     @Override
     public UserDetails getUserDetailsById(Integer userId) {
-        return null;
+        return userDetailsRepository.findById(userId)
+                .orElseThrow(UserNotFoundException::new);
     }
 
     @Override
@@ -38,16 +40,16 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean checkUsernameAlreadyIsPresent(String username) {
-        return false;
+        return userDetailsRepository.existsByUserName(username);
     }
 
     @Override
     public boolean checkEmailAlreadyIsPresent(String email) {
-        return false;
+        return userDetailsRepository.existsByEmail(email.toLowerCase());
     }
 
     @Override
     public boolean checkMobileNumberAlreadyIsPresent(String mobileNumber) {
-        return false;
+        return userDetailsRepository.existsByMobileNumber(mobileNumber);
     }
 }
