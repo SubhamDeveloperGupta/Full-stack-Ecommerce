@@ -13,5 +13,5 @@ public interface CartDetailsService {
     CartDetails createCart(CartRequest request);
     CartDetails addNewItemToCart(Integer userId, Product products);
 
-    CartDetails decreaseProduct(Integer userId, Integer productId);
+    CartDetails decreaseProduct(Integer userId, Product product);
 }

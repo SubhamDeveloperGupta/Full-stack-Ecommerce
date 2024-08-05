@@ -15,11 +15,7 @@ public class CartDetails {
 
     @MongoId
     private String id;
-
-//    @Column(unique = true)
     private Integer userId;
-
-//    @Column(name = "map_products")
     private Map<Integer, ProductPair> productsMap;
 
 }
