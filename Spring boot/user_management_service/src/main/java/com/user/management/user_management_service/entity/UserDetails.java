@@ -23,7 +23,7 @@ public class UserDetails {
     private String email;
     @Column(unique = true)
     private String mobileNumber;
-    @Column(name = "active_status", nullable = false, length = 1)
+    @Column(name = "active_status", nullable = false, length = 1, columnDefinition = "CHAR(1) DEFAULT 'Y'")
     private Character activeStatus;
 
 }

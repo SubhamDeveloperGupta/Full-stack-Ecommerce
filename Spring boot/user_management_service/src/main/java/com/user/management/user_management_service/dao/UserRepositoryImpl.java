@@ -29,13 +29,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public UserDetails CreateUserDetails(UserDetails userDetails) {
-        return null;
+    public UserDetails createUserDetails(UserDetails userDetails) {
+        return userDetailsRepository.save(userDetails);
     }
 
     @Override
-    public UserDetails UpdateUserDetails(Integer userId, UserDetails userDetails) {
-        return null;
+    public UserDetails updateUserDetails(UserDetails userDetails) {
+        return userDetailsRepository.save(userDetails);
     }
 
     @Override

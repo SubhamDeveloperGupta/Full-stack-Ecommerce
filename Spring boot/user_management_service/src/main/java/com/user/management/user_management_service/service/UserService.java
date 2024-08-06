@@ -9,8 +9,8 @@ public interface UserService {
 
     List<UserDetails> getAllUserDetails();
     UserDetails getUserDetailsById(Integer userId);
-    UserDetails CreateUserDetails(UserDetails userDetails);
-    UserDetails UpdateUserDetails(Integer userId, UserDetails userDetails);
+    UserDetails createUserDetails(UserDetails userDetails);
+    UserDetails updateUserDetails(Integer userId, UserDetails userDetails);
 
 
 
