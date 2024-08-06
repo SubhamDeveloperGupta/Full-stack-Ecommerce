@@ -9,8 +9,8 @@ public interface UserRepository {
 
     List<UserDetails> getAllUserDetails();
     UserDetails getUserDetailsById(Integer userId);
-    UserDetails CreateUserDetails(UserDetails userDetails);
-    UserDetails UpdateUserDetails(Integer userId, UserDetails userDetails);
+    UserDetails createUserDetails(UserDetails userDetails);
+    UserDetails updateUserDetails(UserDetails userDetails);
 
     boolean checkUsernameAlreadyIsPresent(String username);
     boolean checkEmailAlreadyIsPresent(String email);
