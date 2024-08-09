@@ -1,6 +1,7 @@
 package com.user.management.user_management_service.controller;
 
 import com.user.management.user_management_service.entity.UserDetails;
+import com.user.management.user_management_service.kafka.KafkaProducerService;
 import com.user.management.user_management_service.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +14,11 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final KafkaProducerService kafka;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, KafkaProducerService kafka) {
         this.userService = userService;
+        this.kafka = kafka;
     }
 
     @GetMapping
@@ -36,6 +39,12 @@ public class UserController {
     @PutMapping
     public ResponseEntity<UserDetails> updateUserDetails(@RequestParam Integer userId, @RequestBody UserDetails userDetails) {
         return new ResponseEntity<>(userService.updateUserDetails(userId, userDetails), HttpStatus.OK);
+    }
+
+    @GetMapping("/kafka")
+    public ResponseEntity<String> generateMessageToKafka(@RequestParam String topicName,
+                                                              @RequestParam String message) {
+        return new ResponseEntity<>(kafka.sendMessageToTopic(topicName, message), HttpStatus.OK);
     }
 
 }

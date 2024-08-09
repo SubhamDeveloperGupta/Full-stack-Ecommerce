@@ -16,7 +16,6 @@ public class UserRepositoryImpl implements UserRepository {
         this.userDetailsRepository = userDetailsRepository;
     }
 
-
     @Override
     public List<UserDetails> getAllUserDetails() {
         return userDetailsRepository.findAll();
