@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
 
+import static com.user.management.user_management_service.util.CommonUtil.USER_TOPIC;
+
 @Service
 public class KafkaProducerService {
 
@@ -15,9 +17,9 @@ public class KafkaProducerService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public String sendMessageToTopic(String topicName, String message) {
+    public String sendMessageToTopic(String message) {
         try {
-            CompletableFuture<SendResult<String, Object>> resultKafka = kafkaTemplate.send(topicName, message);
+            CompletableFuture<SendResult<String, Object>> resultKafka = kafkaTemplate.send(USER_TOPIC, message);
 
             resultKafka.whenComplete((t, ex) -> {
                 if (ex == null) {
