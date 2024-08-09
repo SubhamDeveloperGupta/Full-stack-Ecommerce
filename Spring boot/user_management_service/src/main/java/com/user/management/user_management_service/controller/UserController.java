@@ -42,9 +42,8 @@ public class UserController {
     }
 
     @GetMapping("/kafka")
-    public ResponseEntity<String> generateMessageToKafka(@RequestParam String topicName,
-                                                              @RequestParam String message) {
-        return new ResponseEntity<>(kafka.sendMessageToTopic(topicName, message), HttpStatus.OK);
+    public ResponseEntity<String> generateMessageToKafka(@RequestParam String message) {
+        return new ResponseEntity<>(kafka.sendMessageToTopic(message), HttpStatus.OK);
     }
 
 }
