@@ -4,6 +4,7 @@ import com.user.management.user_management_service.dao.UserRepository;
 import com.user.management.user_management_service.entity.UserDetails;
 import com.user.management.user_management_service.exceptions.GlobalException;
 import com.user.management.user_management_service.exceptions.UserNotFoundException;
+import com.user.management.user_management_service.kafka.KafkaProducerService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +14,11 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final KafkaProducerService kafka;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, KafkaProducerService kafka) {
         this.userRepository = userRepository;
+        this.kafka = kafka;
     }
 
     @Override
@@ -31,7 +34,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails createUserDetails(UserDetails userDetails) {
         filterFields(userDetails);
-        return userRepository.createUserDetails(userDetails);
+        UserDetails userObj = userRepository.createUserDetails(userDetails);
+        kafka.sendMessageToTopic(userObj.getEmail());
+        return userObj;
     }
 
     private void filterFields(UserDetails userDetails) {
