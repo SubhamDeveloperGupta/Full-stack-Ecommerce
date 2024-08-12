@@ -1,5 +1,6 @@
 package com.notification.service.kafka;
 
+import com.notification.service.dto.UserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.mail.SimpleMailMessage;
@@ -20,19 +21,15 @@ public class KafkaWelcomeUserConsumer {
     }
 
     @KafkaListener(topics = USER_TOPIC, groupId = GROUP_ID)
-    public void welcomeUserEmailConsumer(String email) {
+    public void welcomeUserEmailConsumer(UserDetails user) {
+        log.info("Received Object : {}",user);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("noreply@gmail.com");
-        message.setTo(email);
+        message.setTo(user.getEmail());
         message.setSubject("Welcome");
         message.setText("Welcome to our e-commerce website, Thank you for registration.");
         mailSender.send(message);
-        log.info("Mail Send completed Successfully | Email : {}",email);
+        log.info("Mail Send completed Successfully | Email : {}",user.getEmail());
     }
-
-//    @KafkaListener(topics = "", groupId = "")
-//    public void welcomeUserMobileConsumer(String mobile) {
-//        log.info("Consumer User Mobile : {} ",mobile);
-//    }
 
 }
