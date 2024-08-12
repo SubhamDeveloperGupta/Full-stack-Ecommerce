@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     public UserDetails createUserDetails(UserDetails userDetails) {
         filterFields(userDetails);
         UserDetails userObj = userRepository.createUserDetails(userDetails);
-        kafka.sendMessageToTopic(userObj.getEmail());
+        kafka.sendObjectToKafkaTopic(userObj);
         return userObj;
     }
 
